@@ -4,12 +4,20 @@ import classes from './Burger.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 const burger = (props) => {
-    //Create an array of ingredient names using prop object keys, then create a blank array with length of the prop object values and fill blank array with BurgerIngredient components.
-    const transformedIngredients = Object.keys(props.ingredients).map(igKey => {
+    //Create an array of ingredient names using prop object keys, then create a blank array with length of the prop object values and fill blank array with BurgerIngredient components. Using reduce to create single blank array if no ingredients are present.
+    let transformedIngredients = Object.keys(props.ingredients).map(igKey => {
         return [...Array(props.ingredients[igKey])].map((_, i) => {
             return <BurgerIngredient key={igKey + i} type={igKey} />
         });
-    });
+    })
+    .reduce((acc, curVal) => {
+        return acc.concat(curVal)
+    }, []);
+
+    //Check if no ingredients added
+    if (transformedIngredients.length === 0) {
+        transformedIngredients = <p>Please start adding ingredients!</p>
+    }
 
     return (
         <div className={classes.Burger}>
