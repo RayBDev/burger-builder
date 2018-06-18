@@ -5,6 +5,7 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 import classes from './SideDrawer.css';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import Aux from '../../../hoc/Aux/Aux';
+import CloseXBtn from '../../UI/CloseXBtn/CloseXBtn';
 
 const sideDrawer = (props) => {
     let attachedClasses = [classes.SideDrawer, classes.Close];
@@ -15,6 +16,7 @@ const sideDrawer = (props) => {
         <Aux>
             <Backdrop show={props.open} clicked={props.closed}/>
             <div className={attachedClasses.join(' ')}>
+                <CloseXBtn clicked={props.closed}/>
                 <div className={classes.Logo}>
                     <Logo />
                 </div>

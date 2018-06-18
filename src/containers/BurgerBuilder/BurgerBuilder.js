@@ -49,6 +49,24 @@ class BurgerBuilder extends Component {
         this.updatePurchaseState(updatedIngredients);
     }
 
+    igInputChangeHandler = (type, event) => {
+        let eventValue = parseInt(event.target.value, 10);
+        let priceAddition = INGREDIENT_PRICES[type];
+        if(isNaN(eventValue) || eventValue < 0) {
+            eventValue = this.state.ingredients[type];
+            priceAddition = 0;
+        }         
+        const updatedIngredients = {
+            ...this.state.ingredients
+        };
+        updatedIngredients[type] = eventValue;
+        const oldPrice = this.state.totalPrice;
+        const newPrice = oldPrice + priceAddition;
+        this.setState({totalPrice: newPrice, ingredients: updatedIngredients});
+        this.updatePurchaseState(updatedIngredients);
+
+    }
+
     removeIngredientHandler = (type) => {
         const oldCount = this.state.ingredients[type];
         if(oldCount <= 0) {
@@ -105,7 +123,9 @@ class BurgerBuilder extends Component {
                     disabled={disabledInfo} 
                     purchasable={this.state.purchasable}
                     price={this.state.totalPrice} 
-                    ordered={this.purchaseHandler}
+                    ordered={this.purchaseHandler} 
+                    igChange={this.igInputChangeHandler}
+                    igNum={this.state.ingredients}
                     />
             </Aux>
         );

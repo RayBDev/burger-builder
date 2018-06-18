@@ -1,0 +1,8 @@
+.CloseXBtn {
+    float: right;
+    cursor: pointer;
+    padding: 1px 4px;
+    border: solid 1px;
+    border-radius: 50%;
+    font-size: 10px;
+}

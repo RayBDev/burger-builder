@@ -2,6 +2,7 @@ import React from 'react';
 
 import Aux from '../../../hoc/Aux/Aux';
 import Button from '../../UI/Button/Button';
+import CloseXBtn from '../../UI/CloseXBtn/CloseXBtn';
 
 const orderSummary = (props) => {
         const ingredientSummary = Object.keys(props.ingredients).map(igKey => {
@@ -12,6 +13,7 @@ const orderSummary = (props) => {
         
         return (
             <Aux>
+                <CloseXBtn clicked={props.purchaseCanceled}/>
                 <h3>Your Order</h3>
                 <p>A delicious burger with the following ingredients:</p>
                 <ul>
