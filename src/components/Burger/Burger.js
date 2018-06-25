@@ -14,6 +14,19 @@ const burger = (props) => {
         return acc.concat(curVal)
     }, []);
 
+    const ingredientOrder = ['lettuce', 'bacon', 'cheese', 'meat'];
+
+    const sortedIngredients = []; 
+    ingredientOrder.forEach((_, i) => {
+        transformedIngredients.forEach(cur => {
+            if(cur.props.type === ingredientOrder[i]) {
+                sortedIngredients.push(cur);
+            }
+        })     
+    });
+    
+    transformedIngredients = sortedIngredients;
+
     //Check if no ingredients added
     if (transformedIngredients.length === 0) {
         transformedIngredients = <p>Please start adding ingredients!</p>
