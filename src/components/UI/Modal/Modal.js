@@ -8,7 +8,7 @@ class Modal extends Component {
 
     //Modal is hidden until order button is pressed and should not update unless shown
     shouldComponentUpdate(nextProps, nextState){
-        return nextProps.show !== this.props.show;
+        return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
     }
 
     render() {
