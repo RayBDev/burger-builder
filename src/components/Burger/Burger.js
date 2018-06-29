@@ -14,6 +14,7 @@ const burger = (props) => {
         return acc.concat(curVal)
     }, []);
 
+    //Reorder ingredients due to server fetching alphabetization
     const ingredientOrder = ['lettuce', 'bacon', 'cheese', 'meat'];
 
     const sortedIngredients = []; 
