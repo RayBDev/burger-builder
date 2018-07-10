@@ -24,9 +24,9 @@ const buildControls = (props) => (
             igChange={(event) => props.igChange(ctrl.type, event)}/>
         ))}
         <button 
-        className={classes.OrderButton} 
-        disabled={!props.purchasable} 
-        onClick={props.ordered}>ORDER NOW</button>
+            className={classes.OrderButton} 
+            disabled={!props.purchasable} 
+            onClick={props.ordered}>{props.isAuth ? 'ORDER NOW' : 'LOG IN TO ORDER'}</button>
     </div>
 );
 
